@@ -38,8 +38,6 @@ namespace Chess.GUI
             this.Player2Time = new System.Windows.Forms.Label();
             this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
             this.skinsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Skins_button = new System.Windows.Forms.Button();
-            this.folderBrowser = new System.Windows.Forms.FolderBrowserDialog();
             this.SuspendLayout();
             // 
             // gameConsole
@@ -137,26 +135,11 @@ namespace Chess.GUI
             this.skinsToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.skinsToolStripMenuItem.Text = "skins";
             // 
-            // Skins_button
-            // 
-            this.Skins_button.Location = new System.Drawing.Point(908, 643);
-            this.Skins_button.Name = "Skins_button";
-            this.Skins_button.Size = new System.Drawing.Size(75, 23);
-            this.Skins_button.TabIndex = 105;
-            this.Skins_button.Text = "Skins";
-            this.Skins_button.UseVisualStyleBackColor = true;
-            this.Skins_button.Click += new System.EventHandler(this.Skin_Click);
-            // 
-            // folderBrowser
-            // 
-            this.folderBrowser.SelectedPath = "Folder Selection";
-            // 
             // PlayWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(984, 666);
-            this.Controls.Add(this.Skins_button);
             this.Controls.Add(this.Player2Time);
             this.Controls.Add(this.Player1Time);
             this.Controls.Add(this.label2);
@@ -190,8 +173,6 @@ namespace Chess.GUI
         private System.Windows.Forms.Label Player2Time;
         private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
         private System.Windows.Forms.ToolStripMenuItem skinsToolStripMenuItem;
-        private System.Windows.Forms.Button Skins_button;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowser;
     }
 }
 

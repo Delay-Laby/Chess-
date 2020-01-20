@@ -14,7 +14,7 @@ namespace Chess.Core
         private Chess.Figures.FigureColor runColor;
         private Position figurePos;
         private PlayersState pState;
-        private bool endGameLock, strokeLock;
+        private bool endGameLock;
   
         private System.Windows.Forms.Timer PlayerClock;
 
@@ -26,21 +26,14 @@ namespace Chess.Core
           
         }
 
-        // Инициализания окон 
+        // Инициализания inviteWindow  
         public void Initialize()
         {
-            matrix = new CoreMatrix();
-            playWindow = new PlayWindow(this, "Chess", new GuiMatrix(matrix));
-            playWindow.FormClosed += new FormClosedEventHandler(PlayWindowClose);
-
-            PlayerClock = new System.Windows.Forms.Timer();
-            PlayerClock.Tick += new EventHandler(PlayerClock_Tick);
-            PlayerClock.Interval = 1000;
 
             inviteWindow = new InviteWindow();
             inviteWindow.OnChoice += new InviteWindow.OnChoiceEventHandler(InviteWindowMessageReceived);
             inviteWindow.Show();
-            //playWindow.Show();
+           
             Application.Run();
         }
 
@@ -53,11 +46,6 @@ namespace Chess.Core
 
         private void ReInitialize()
         {
-            runColor = FigureColor.WHITE;
-            matrix = new CoreMatrix();
-            playWindow = new PlayWindow(this, "Chess", new GuiMatrix(matrix));
-            playWindow.FormClosed += new FormClosedEventHandler(PlayWindowClose);
-
             inviteWindow = new InviteWindow();
             inviteWindow.OnChoice += new InviteWindow.OnChoiceEventHandler(InviteWindowMessageReceived);
             inviteWindow.Show();
@@ -143,9 +131,17 @@ namespace Chess.Core
                 EndGame();
         }
 
-        private void StartLocal()
-        {
-       
+        private void Start()
+        {   
+            runColor = FigureColor.WHITE;
+            matrix = new CoreMatrix();
+            playWindow = new PlayWindow(this, "Chess", new GuiMatrix(matrix));
+            playWindow.FormClosed += new FormClosedEventHandler(PlayWindowClose);
+
+            PlayerClock = new System.Windows.Forms.Timer();
+            PlayerClock.Tick += new EventHandler(PlayerClock_Tick);
+            PlayerClock.Interval = 1000;
+            endGameLock = false;
             PlayerClock.Start();
             playWindow.Show();
         }
@@ -240,7 +236,7 @@ namespace Chess.Core
             CheckForMate();
             playWindow.matrix.ResetAllAttribures();
             playWindow.Cursor = Cursors.Default;
-            playWindow.ReDraw();
+           
         }
 
         private void GetInPass(Position oldPos, Position newPos)
@@ -290,12 +286,12 @@ namespace Chess.Core
         {
             switch (e.Type)
             {
-                case OnChoiceEventArgs.ConnectionType.OFFLINE:
-                    StartLocal();
+                case OnChoiceEventArgs.GameType.OFFLINE:
+                    Start();
                     break;
 
 
-               case OnChoiceEventArgs.ConnectionType.EXIT:
+               case OnChoiceEventArgs.GameType.EXIT:
                    Application.Exit();
                     break;
             }
@@ -305,7 +301,7 @@ namespace Chess.Core
 
         public void SpotSelected(Position spotPos)
         {
-            if (endGameLock || strokeLock)
+            if (endGameLock)
                 return;
 
             
@@ -334,7 +330,7 @@ namespace Chess.Core
 
         public bool SpotFocused(Position spotPos)
         {
-            if (endGameLock || strokeLock)
+            if (endGameLock )
                 return false;
 
             if ((matrix.HasFigureAt(spotPos) && matrix.FigureAt(spotPos).Color == runColor)

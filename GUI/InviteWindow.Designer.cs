@@ -32,7 +32,9 @@
             this.OfflineGameButton = new System.Windows.Forms.Button();
             this.ExitButton = new System.Windows.Forms.Button();
             this.layoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
             this.status = new System.Windows.Forms.Label();
+            this.folderBrowser = new System.Windows.Forms.FolderBrowserDialog();
             this.layoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,7 +54,7 @@
             // 
             this.ExitButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ExitButton.AutoSize = true;
-            this.ExitButton.Location = new System.Drawing.Point(3, 34);
+            this.ExitButton.Location = new System.Drawing.Point(3, 65);
             this.ExitButton.Name = "ExitButton";
             this.ExitButton.Size = new System.Drawing.Size(125, 25);
             this.ExitButton.TabIndex = 2;
@@ -65,12 +67,25 @@
             this.layoutPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.layoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.layoutPanel.Controls.Add(this.OfflineGameButton);
+            this.layoutPanel.Controls.Add(this.button1);
             this.layoutPanel.Controls.Add(this.ExitButton);
             this.layoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.layoutPanel.Location = new System.Drawing.Point(27, 26);
             this.layoutPanel.Name = "layoutPanel";
             this.layoutPanel.Size = new System.Drawing.Size(131, 126);
             this.layoutPanel.TabIndex = 5;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button1.AutoSize = true;
+            this.button1.Location = new System.Drawing.Point(3, 34);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(125, 25);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Skins";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Skin_Click);
             // 
             // status
             // 
@@ -108,5 +123,7 @@
         private System.Windows.Forms.FlowLayoutPanel layoutPanel;
         private System.Windows.Forms.Label status;
         public System.Windows.Forms.Button OfflineGameButton;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowser;
     }
 }

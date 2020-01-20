@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-
+using System.IO;
+using Chess.Figures;
+using Chess.Core;
 
 
 namespace Chess.GUI
@@ -22,9 +24,10 @@ namespace Chess.GUI
 
         private void OfflineGameButton_Click(object sender, EventArgs e)
         {
+           
             if (OnChoice != null)
             {
-                OnChoice(this, new OnChoiceEventArgs(OnChoiceEventArgs.ConnectionType.OFFLINE, null));
+                OnChoice(this, new OnChoiceEventArgs(OnChoiceEventArgs.GameType.OFFLINE));
                 choiceMade = true;
             }
             Close();
@@ -39,24 +42,34 @@ namespace Chess.GUI
         private void InviteWindow_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (!choiceMade && OnChoice != null)
-                OnChoice(this, new OnChoiceEventArgs(OnChoiceEventArgs.ConnectionType.EXIT, null));
+                OnChoice(this, new OnChoiceEventArgs(OnChoiceEventArgs.GameType.EXIT));
             choiceMade = false;
+            
         }
 
-    
+        private void Skin_Click(object sender, EventArgs e)
+        {
+            if (folderBrowser.ShowDialog() == DialogResult.OK)
+            {
+                string path = folderBrowser.SelectedPath;
+                string folder = new DirectoryInfo(path).Name;
+
+                Figure.Skin = folder;
+
+            }
+        }
     }
 
 
     public class OnChoiceEventArgs: EventArgs
     {
-        public enum ConnectionType { SERVER, CLIENT, OFFLINE, EXIT };
-        private ConnectionType type;
-        public ConnectionType Type { get { return type; } }
-        private string ip = null;
-        public OnChoiceEventArgs(ConnectionType connectionType, string InternetProtocol)
+        public enum GameType { OFFLINE, EXIT };
+        private GameType gtype;
+        public GameType Type { get { return gtype; } }
+                public OnChoiceEventArgs(GameType connectionType)
         {
-            ip = InternetProtocol;
-            type = connectionType;
+            
+            gtype = connectionType;
         }
     }
 }

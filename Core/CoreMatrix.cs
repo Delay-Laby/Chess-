@@ -19,7 +19,7 @@ namespace Chess.Core
 		private Position KingBlack;
 
         private Figure[,] sMatrix;
-
+        
         public CoreMatrix()
         {
 			 sMatrix = new Figure[8, 8];
@@ -60,7 +60,6 @@ namespace Chess.Core
              {
                  sMatrix[i, 1] = new Pawn(FigureColor.BLACK);
              }
-
 
 			KingBlack = new Position(4, 0);
 			KingWhite = new Position( 4, 7);

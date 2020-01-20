@@ -54,12 +54,6 @@
   <ItemGroup>
     <Compile Include="Core\CoreMatrix.cs" />
     <Compile Include="Core\WrongPositionException.cs" />
-    <Compile Include="GUI\InfoWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\InfoWindow.Designer.cs">
-      <DependentUpon>InfoWindow.cs</DependentUpon>
-    </Compile>
     <Compile Include="Core\GameCore.cs" />
     <Compile Include="GUI\FigureChoiceWindow.cs">
       <SubType>Form</SubType>
@@ -83,9 +77,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="GUI\InfoWindow.resx">
-      <DependentUpon>InfoWindow.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GUI\FigureChoiceWindow.resx">
       <DependentUpon>FigureChoiceWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -134,18 +125,8 @@
   -->
   <ItemGroup>
     <Content Include="favicon.ico" />
-    <Content Include="images\figures\black_bishop.png" />
-    <Content Include="images\figures\black_king.png" />
-    <Content Include="images\figures\black_knight.png" />
-    <Content Include="images\figures\black_pawn.png" />
-    <Content Include="images\figures\black_queen.png" />
-    <Content Include="images\figures\BLACK_ROCK.PNG" />
-    <Content Include="images\figures\white_bishop.png" />
-    <Content Include="images\figures\white_king.png" />
-    <Content Include="images\figures\white_knight.png" />
-    <Content Include="images\figures\white_pawn.png" />
-    <Content Include="images\figures\white_queen.png" />
-    <Content Include="images\figures\white_rock.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="images\" />
+  </ItemGroup>
 </Project>

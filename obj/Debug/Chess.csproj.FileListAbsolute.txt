@@ -39,7 +39,6 @@ C:\Users\Sasha\Desktop\Эл.Тех\1 Оффлайн версия шахмат\Ch
 C:\Users\Sasha\Desktop\Эл.Тех\1 Оффлайн версия шахмат\Chess\bin\Debug\Chess.exe
 C:\Users\Sasha\Desktop\Эл.Тех\1 Оффлайн версия шахмат\Chess\bin\Debug\Chess.pdb
 C:\Users\Sasha\Desktop\Эл.Тех\1 Оффлайн версия шахмат\Chess\obj\Debug\Chess.csprojAssemblyReference.cache
-C:\Users\Sasha\Desktop\Эл.Тех\1 Оффлайн версия шахмат\Chess\obj\Debug\Chess.Core.InfoWindow.resources
 C:\Users\Sasha\Desktop\Эл.Тех\1 Оффлайн версия шахмат\Chess\obj\Debug\Chess.GUI.FigureChoiceWindow.resources
 C:\Users\Sasha\Desktop\Эл.Тех\1 Оффлайн версия шахмат\Chess\obj\Debug\Chess.GUI.InviteWindow.resources
 C:\Users\Sasha\Desktop\Эл.Тех\1 Оффлайн версия шахмат\Chess\obj\Debug\Chess.GUI.PlayWindow.resources

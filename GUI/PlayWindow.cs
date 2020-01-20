@@ -12,7 +12,7 @@ namespace Chess.GUI
     {
         private const int sqSize = 80;   // размер квадрата
         private const int offset = 25;   // отступ от края формы
-        //Field 
+       
         public GuiMatrix matrix = null;
         public readonly Color ColorSelected = Color.PaleGoldenrod;
        
@@ -33,18 +33,6 @@ namespace Chess.GUI
         private int p1Time = 0, p2Time = 0;
 
 
-        public bool NetworkEnabled  {
-            set  {
-                if (value == true) {
-                    commandLine.Visible = true;
-                    sendButton.Visible = true;
-                }
-                else  {
-                    commandLine.Visible = false;
-                    sendButton.Visible = false;
-                }
-            }
-        }
 
         public delegate void DrawAsyncDelegate(object sender, EventArgs e);
 
@@ -55,7 +43,6 @@ namespace Chess.GUI
 			matrix = guiMatrix;
 			control = gameControl;
 		}
-          
 
         //draw chess field
         private void Draw(object sender, EventArgs e)
@@ -140,12 +127,7 @@ namespace Chess.GUI
         {
             graph.Graphics.DrawImage(img, p.X * sqSize + offset, p.Y * sqSize);
         }
-        // Sync drawing
-        public void ReDraw()
-        {
-            Draw(null, null);
-        }
-        // Manual sync/async drawing
+ 
         public void ReDraw(bool async)
         {
             if (async)
@@ -229,28 +211,6 @@ namespace Chess.GUI
         }
 
 
-
-        public void PrintMessage(string str, MessageOwner owner)
-        {
-            switch (owner)
-            {
-                case MessageOwner.Player1:
-                    PrintToConsole("Player1: ", Color.Green);
-                    PrintToConsoleLn(str, Color.FromArgb(64, 128, 255));
-                    break;
-
-                case MessageOwner.Player2:
-                    PrintToConsole("Player2: ", Color.Green);
-                    PrintToConsoleLn(str, Color.FromArgb(128, 64, 255));
-                    break;
-
-                case MessageOwner.System:
-                    PrintToConsole("System: ", Color.Red);
-                    PrintToConsoleLn(str, Color.Black);
-                    break;
-            }
-        }
-
         //Mouse down event handler
         private void PlayWindow_Click(object sender, MouseEventArgs e)
         {   
@@ -311,19 +271,6 @@ namespace Chess.GUI
             }
         }
         // Указывать папку со скинами, а затем перезапустить игру 
-        private void Skin_Click(object sender, EventArgs e)
-        {
-            
-            if (folderBrowser.ShowDialog() == DialogResult.OK)
-            {
-                string path =  folderBrowser.SelectedPath;
-                string folder = new DirectoryInfo(path).Name;
-
-                Figure.Skin = folder;
-                
-            }
-            
-        }
 
         public Point GetPosOnScreen(Position pt)
         {

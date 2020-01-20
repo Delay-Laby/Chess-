@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using Chess.Figures;
+using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using Chess.Figures;
 
 namespace Chess.GUI
 {
@@ -17,7 +12,7 @@ namespace Chess.GUI
         private System.Drawing.Pen pen = null;
         private int FocusedSpot = 0;
         private System.Windows.Forms.Timer mouseTracker;
-    
+
         private Figure[] arr;
 
         private int result;
@@ -93,13 +88,10 @@ namespace Chess.GUI
             graph.Graphics.DrawImage(arr[2].image, 0, sqSize);
             graph.Graphics.DrawImage(arr[3].image, sqSize, sqSize);
             graph.Render();
-           
+
         }
-        private void DrawFigure(Position p, System.Drawing.Image img)
-        {
-            graph.Graphics.DrawImage(img, p.X * sqSize, p.Y * sqSize);
-        }
-        
+
+
 
         private void ReDraw(bool async)
         {
@@ -129,7 +121,7 @@ namespace Chess.GUI
                 if (pt.Y < 1) FocusedSpot = 0;
                 else FocusedSpot = 1;
             }
-            else 
+            else
             {
                 if (pt.Y < 1) FocusedSpot = 2;
                 else FocusedSpot = 3;

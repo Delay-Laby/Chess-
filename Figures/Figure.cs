@@ -33,11 +33,11 @@ namespace Chess
 
             public const string PREFIX=@"..\..\images\";
 
-            public static  string Skin = "figures";
+            public static  string Skin = "adventurer";
             //atack and move has differents directions
             protected bool diff;
-		
 
+           
 			//figure image
 			protected Bitmap img = null;
 			public Bitmap image { 
@@ -130,7 +130,10 @@ namespace Chess
 					scolor = "white";
 				else 
 					scolor = "black";
-					 
+				if (Skin== null)
+                Skin = "adventurer";
+                                
+
 				string path =PREFIX + Skin + SPLITER 
 							+ scolor
 							+ '_'
@@ -139,8 +142,8 @@ namespace Chess
 				// images/figures/white_pawn.png
                 try
                 {
-                    img = new Bitmap(path) ;
-                }
+                    img = new Bitmap(path);
+                                    }
                 catch (System.Exception)
                 {
                     img = null;
